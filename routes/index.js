@@ -1,4 +1,9 @@
 'use strict';
+
+/**
+ *
+ * @type {*|exports|module.exports}
+ */
 let express = require('express');
 let router = express.Router();
 

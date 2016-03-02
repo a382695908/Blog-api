@@ -1,24 +1,23 @@
 'use strict';
 
+/**
+ * app主程序
+ */
+
 let express = require('express');
 let path    = require('path');
 let favicon = require('serve-favicon');
 let logger  = require('morgan');
 //let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
-let jwt        = require('jsonwebtoken');
 
-let redis  = require('./db/redis');
 /**
- * 路由文件
- * @type {router|exports|module.exports}
+ *
  */
-let routes = require('./routes/index');
-let users  = require('./routes/users');
+let app   = express();
+let api   = require('./api');
+let admin = require('./admin');
 
-let app     = express()
-    , api   = express()
-    , admin = express();
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
@@ -44,70 +43,42 @@ app.use(bodyParser.urlencoded({extended: false}));
 //静态文件
 //app.use(express.static(path.join(__dirname, 'public')));
 
-/**
- * 配置路由
- * 使用 express.Router的写法
- */
-api.use('/', routes);
-api.use('/users', users);
+
+app.use('/api', api);
+app.use('/admin', admin);
 
 
 /**
  * catch 404 and forward to error handler
+ * 到达后面的都是未处理的路由
  * todo 写日志
  */
-api.use(function (req, res, next) {
-  console.log(req);
+app.use(function (req, res, next) {
   let err    = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-admin.use(function (req, res, next) {
-  console.log(req);
-  /**
-   * 允许跨域访问
-   */
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-
-
-  //if (!req.header('auth') && jwt.verify()) {
-  //  res.json({
-  //    state: 'error',
-  //    msg  : '校验失败'
-  //  });
-  //  console.log('未登录');
-  //  //res.redirect('/');
-  //}
-  next();
-});
 
 // error handlers
-/**
- * development error handler
- * will print stacktrace
- */
-if (app.get('env') === 'development') {
-  app.use(function (err, req, res, next) {
-    res
-        .status(err.status || 500)
-        .send('sever error,code:500');
-  });
-}
 
 /**
  * production error handler
  * no stacktraces leaked to user
  */
 app.use(function (err, req, res, next) {
-  res
-      .status(err.status || 500)
-      .send('sever error,code:500');
-});
+  if (err.status = 404) {
+    res.status(404).json({
+      code: 404,
+      msg : '没有这个接口'
+    });
+  }
+  else {
+    res
+        .status(500)
+        .send('sever error,code:' + (err.status || 500));
+  }
 
-app.use('/api', api);
-app.use('/admin', admin);
+});
 
 module.exports = app;
