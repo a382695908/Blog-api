@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * Module dependencies.
+ * 启动程序
+ * todo 开启崩溃重启功能 cluster.isMaster
+ *
  */
 
 var app = require('../app');

@@ -4,19 +4,24 @@
  * app主程序
  */
 
-let express = require('express');
 let path    = require('path');
+let process    = require('process');
+
+let express = require('express');
 let favicon = require('serve-favicon');
 let logger  = require('morgan');
 //let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
+process.on('uncaughtException', function (error) {
+  console.log(error);
+});
+
 /**
  *
  */
-let app   = express();
-let api   = require('./api');
-let admin = require('./admin');
+let app = express();
+//let api   = require('./api');
 
 
 // view engine setup
@@ -43,9 +48,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //静态文件
 //app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use('/api', api);
-app.use('/admin', admin);
+app.use('/api', require('./api'));
 
 
 /**
@@ -68,10 +71,12 @@ app.use(function (req, res, next) {
  */
 app.use(function (err, req, res, next) {
   if (err.status = 404) {
-    res.status(404).json({
-      code: 404,
-      msg : '没有这个接口'
-    });
+    res
+        .status(404)
+        .json({
+          code: 404,
+          msg : '没有这个接口'
+        });
   }
   else {
     res

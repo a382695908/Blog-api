@@ -1,20 +1,20 @@
 "use strict";
 
 /**
- * /admin/
- * 管理员API
+ * @description
+ * @author yingyujia
+ * @time 16/3/2
  */
 
 let express = require('express');
+let router  = express.Router();
 let jwt     = require('jsonwebtoken');
 
-let config = require('./config');
-let redis  = require('./db/redis');
+let config = require('../config');
+let redis  = require('../db/redis');
 
 
-let admin = express();
-
-admin.use(function (req, res, next) {
+router.use(function (req, res, next) {
 
   /**
    * 允许跨域访问
@@ -23,26 +23,25 @@ admin.use(function (req, res, next) {
   //res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
   //res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
 
-  if (req.headers.authorization) {
+  if (req.headers.authorization) { //有登陆
     var parts = req.headers.authorization.split(' ');
 
     if (parts.length == 2) {
-      var scheme      = parts[0];
-      var credentials = parts[1];
+
+      var scheme = parts[0];//Admin
+      var token = parts[1];
 
       //if (/^Admin/i.test(scheme)) {
-      token = credentials;
 
-      var dtoken = jwt.decode(token, config.jwt.secret, {algorithms: ['RS256']});
+      //var dtoken = jwt.decode(token, config.jwt.secret);
 
-      console.log(dtoken);
       //验证token
-      jwt.verify(token, config.jwt.secret, {algorithms: ['HS256']}, function (err, decode) {
+      jwt.verify(token, config.jwt.secret, function (err, decode) {
         if (err) {
           //报错了
           // err.name='JsonWebTokenError'
           //todo 写日志,记录ip,该ip有恶意行为   err.name   err.message
-
+          next({});
         }
         else {
           //todo 验证 访问的url path知否有权限
@@ -58,20 +57,19 @@ admin.use(function (req, res, next) {
       //}
     }
     else {
-      res.json({
-        type   : 'credentials_bad_format',
-        message: 'token 格式不正确'
+      next({
+        log    : true,
+        message: 'credentials_bad_format'
       });
     }
   }
-  else {
+  else {//没登陆
+
     //模拟登录效果
-    //todo 跳转登录
-    var token = jwt.sign({foo: 'bar'}, config.jwt.secret, {algorithms: ['HS256']});
+    var token = jwt.sign({foo: 'bar'}, config.jwt.secret);
     res.setHeader('Authorization', 'Admin ' + token);
 
-
-    res.send('跳转登录');
+    next({});
   }
 
 });
@@ -80,13 +78,16 @@ admin.use(function (req, res, next) {
  * 如果token解析成功,检查path和权限
  * 否者传error
  */
-admin.use(function (req, res, next) {
-  if(err){
-    next(err);
-  }
+router.use(function (err, req, res, next) {
 
+  /**
+   * 根据 req.originalUrl 校验权限
+   */
+  //console.log(req.originalUrl);
 
-  next();
+  //屏蔽身份校验
+  err=undefined;
+  next(err);
 });
 
 /**
@@ -96,18 +97,26 @@ admin.use(function (req, res, next) {
  * token 解析失败,db.save(ip,token,)
  * todo token 解析失败 一定次数,禁止访问(前后端)
  */
-admin.use(function (err,req, res, next) {
-  if(err){
+router.use(function (err, req, res, next) {
 
+  if (err) {
+    //401  认证授权失败。（包括密钥信息不正确；数字签名错误；授权已超时）
+
+    //前台根据不同错误弹框
+    //如果有错误消息,前台弹框显示,否则直接跳转登录页
+    res
+        .status(401)
+        .json({
+          success: false,
+          msg    : err.msg || false
+        });
+  }
+  else {
+    next();
   }
 
 });
 
+module.exports = router;
 
-/**
- * 这里写路由
- */
-admin.use('/users', require('./admin/users'));
-admin.use('/post', require('./admin/post'));
 
-module.exports = admin;

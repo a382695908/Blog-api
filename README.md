@@ -15,7 +15,14 @@ blog的后端(API形式)
 * [leancloud]()
 * jwt
 
-### 使用的
+
+## 一些设定
+* [状态码](http://developer.qiniu.com/docs/v6/api/reference/codes.html)
+* 身份验证机制 使用josn web token,Authorization: \[Admin\] [token]
+
+
+
+### 使用的 node 模块
 * [express](https://github.com/expressjs/express) Fast, unopinionated, minimalist web framework for node
 * [morgan](https://github.com/expressjs/morgan) HTTP request logger middleware for node.js
 * [mocha](https://github.com/mochajs/mocha) 测试mocha - simple, flexible, fun javascript test framework for node.js & the browser.
