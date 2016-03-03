@@ -11,8 +11,14 @@ let router  = express.Router();
 
 router.route('/')
     .get(function (req, res, next) {
+      //读取数据库中管理员公开信息
       res.json({
-        //读取数据库
+        name:'blog',
+        author:'ying yujia',
+        qq:'602988068',
+        email:'602988068@qq.com,yyjazsf@live.cn',
+        age:new Date().getFullYear()-new Date('1991-04-21').getFullYear()
+        //
       });
     });
 
