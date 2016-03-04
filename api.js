@@ -11,6 +11,13 @@ let api   = express();
  */
 api.use(require('./api/auth'));
 
+api.use('/test', function (req, res, next) {
+  console.log(req.query);
+  console.log(req.body);
+
+  res.json(req.body);
+});
+
 /**
  * 配置路由
  * 使用 express.Router的写法

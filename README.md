@@ -28,6 +28,7 @@ blog的后端(API形式)
 * [redis](https://github.com/NodeRedis/node_redis)
 * [jwt](https://github.com/auth0/node-jsonwebtoken) json web token
 * [nodemailer](https://github.com/nodemailer/nodemailer) 邮件
+* [lodash](https://lodash.com/docs#template) 优先使用ES6
 
 ### express 相关中间件
 * [body-parser](https://github.com/expressjs/body-parser) Node.js body parsing middleware.

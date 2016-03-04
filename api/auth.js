@@ -67,7 +67,7 @@ router.use(function (req, res, next) {
 
     //模拟登录效果
     var token = jwt.sign({foo: 'bar'}, config.jwt.secret);
-    res.setHeader('Authorization', 'Admin ' + token);
+    res.setHeader('Authorization', 'token ' + token);//参考github的oauth接口
 
     next({});
   }

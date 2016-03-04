@@ -29,7 +29,7 @@ let app = express();
 //app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(logger('dev'));
 
@@ -46,7 +46,12 @@ app.use(bodyParser.urlencoded({extended: false}));
 //app.use(cookieParser());
 
 //静态文件
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
+/**
+ * 暂时放hexo的静态博客
+ * 后期换成ng1.x的博客,控制路由使用H5模式
+ */
+app.use(express.static(path.join(__dirname, 'views')));
 
 app.use('/api', require('./api'));
 
