@@ -45,7 +45,7 @@ router.use(function (req, res, next) {
         }
         else {
           //todo 验证 访问的url path知否有权限
-          console.log('decode', decode);
+          //console.log('decode', decode);
           //401
           next();
         }
