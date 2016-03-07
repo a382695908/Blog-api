@@ -82,6 +82,9 @@ router.use(function (err, req, res, next) {
 
   /**
    * 根据 req.originalUrl 校验权限
+   * 401没有权限(令牌、用户名、密码错误)
+   * 403 Forbidden(登录了,但是没权限)
+   *
    */
   //console.log(req.originalUrl);
 

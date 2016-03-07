@@ -2,6 +2,7 @@
 
 /**
  * @description 返回这个blog信息
+ * + api的所有路径 列表
  * @author yingyujia
  * @time 16/3/2
  */

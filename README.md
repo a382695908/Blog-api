@@ -20,6 +20,8 @@ blog的后端(API形式)
 * get 查询类方法,有参数就返回特定对象,否则就是分页json
 * [api参考](https://leancloud.cn/docs/rest_api.html#用户)
 * 权限  path method uid
+* api暂时放在 https://yingyj.com/api/ 下,以后可能会改成 https://api.yingyj.com/version(跨域用nginx?)
+
 
 ### 使用的 node 模块
 * [express](https://github.com/expressjs/express) Fast, unopinionated, minimalist web framework for node

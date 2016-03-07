@@ -25,6 +25,7 @@ let _postData =
 //router.all('/**',fun)
 
 /**
+ * (第一步)
  * 获取第三方登录的url
  * 网页上的链接(当前页打开)
  */
@@ -55,7 +56,7 @@ let _postData =
     });
 
 /**
- * 使用access_token获取数据
+ * (第三步)使用access_token获取数据
  * @param data
  * @returns {Promise}
  */
@@ -86,6 +87,7 @@ let getData = (data, form)=> {
 };
 
 /**
+ * (第二步)
  * 请求access_token
  */
 router
