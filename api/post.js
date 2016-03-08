@@ -1,5 +1,5 @@
 /**
- * @description 博客相关 /admin/post
+ * @description 博文相关
  * @author yingyujia
  * @time 16/3/2
  */

@@ -21,6 +21,7 @@
   "homepage": "https://github.com/yyjazsf/blog-api#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "connect-busboy": "0.0.2",
     "cookie-parser": "^1.4.1",
     "debug": "*",
     "express": "^4.13.4",
@@ -30,6 +31,7 @@
     "lodash": "^4.6.1",
     "mongoose": "^4.4.5",
     "morgan": "^1.7.0",
+    "node-uuid": "^1.4.7",
     "nodemailer": "^2.2.1",
     "redis": "^2.4.2",
     "request": "^2.69.0",

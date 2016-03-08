@@ -13,9 +13,9 @@ let logger  = require('morgan');
 //let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
-process.on('uncaughtException', function (error) {
-  console.log(error);
-});
+//process.on('uncaughtException', function (error) {
+//  console.error(error);
+//});
 
 /**
  *

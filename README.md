@@ -1,20 +1,24 @@
 blog-api
 ===============
 blog的后端(API形式)
+## master
+* 使用nginx+redis(数据库+缓存)
 
 ## 分支
-* 使用nginx+qiniu
-* 使用nginx+redis(数据库+缓存)/或者数据库用mongodb
+* 使用nginx+[qiniu](https://portal.qiniu.com/signup?code=3lbnx1x2ub1hu)
+* 数据库mongodb+redis缓存
+* 数据库mysql+redis缓存
 
 ## 技术使用
-* http2(节省流量,不需要合并文件等优化了)
-* https(http2的前置条件)
+* http2(节省流量,压缩http头,不需要合并文件等优化了)
+* https(http2的前置条件)(沃通免费证书)
 * nginx
 * redis(分支2)
 * [qiniu](https://portal.qiniu.com/signup?code=3lbnx1x2ub1hu)
 * jwt
 
 ## 一些设定
+学习目的,所以很多设定不合理(不必要的)
 * [状态码](http://developer.qiniu.com/docs/v6/api/reference/codes.html)
 * 身份验证机制 使用josn web token,Authorization: \[Admin\] [token]
 * get 查询类方法,有参数就返回特定对象,否则就是分页json

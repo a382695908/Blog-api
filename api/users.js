@@ -13,7 +13,7 @@ let router = express.Router();
 /**
  * api/users/
  * get 获取用户列表
- * post 新建一个(多个?)用户
+ * post 添加一个(多个?)用户
  */
 router
     .route('/')
@@ -67,7 +67,16 @@ router
     });
 
 /**
+ * 重置密码
+ */
+router.post('/requestPasswordReset',function(req, res, next){
+
+  res.send('重置密码-post');
+});
+
+/**
  * api/users/login
+ * post 登录
  */
 router
     .route('/login')
@@ -75,6 +84,18 @@ router
 
       console.log(req.body);
       res.send('登录-post');
+    });
+
+/**
+ * api/users/login
+ * post 退出登录
+ */
+router
+    .route('/logout')
+    .post(function (req, res, next) {
+      //
+
+      res.send('退出-post');
     });
 
 
