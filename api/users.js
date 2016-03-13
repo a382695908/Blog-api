@@ -37,7 +37,7 @@ router
 
 /**
  * api/users/:id
- * get 特定用户信息
+ * get 指定用户信息
  * put 更新用户 (全部信息)
  * patch 更新用户 (部分信息)
  * delete 删除用户
@@ -70,7 +70,7 @@ router
  * 重置密码
  */
 router.post('/requestPasswordReset',function(req, res, next){
-
+  //todo 发邮件
   res.send('重置密码-post');
 });
 
@@ -87,7 +87,7 @@ router
     });
 
 /**
- * api/users/login
+ * api/users/logout
  * post 退出登录
  */
 router
