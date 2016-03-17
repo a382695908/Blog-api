@@ -14,7 +14,7 @@ restful api
 在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应.
 
 ## HTTP动词
-除了post,其他炒作都是幂等的(无论执行多少次都是同一个结果)
+除了post,其他炒作都是幂等的(无论执行多少次都是同一个结果),正确使用可以利用缓存
 * GET（select）：从服务器取出资源（一项或多项）。
 * POST（create）：在服务器新建一个资源。
 * PUT（update）：在服务器更新资源（客户端提供改变后的完整资源）。
@@ -22,7 +22,7 @@ restful api
 * DELETE（delete）：从服务器删除资源。
 
 ## 参数
-* ?page=1&rows=20：指定第几页，以及每页的记录数  参考easyui
+* ?offset=0&size=20：起始位置+条数
 
 ## http status code
 * 200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。
