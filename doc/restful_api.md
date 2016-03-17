@@ -42,15 +42,6 @@ restful api
 * 500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。
 * 501 指定的方法未实现
 
-## 错误处理
-```json
-{
- "success":true,
- "code":"status code",
- "msg":""
-}
-```
-
 ## 返回结果
 * GET /collection：返回资源对象的列表 array
 * GET /collection/resource：返回单个资源对象 json
@@ -78,5 +69,20 @@ restful api
 * type表示返回类型
 
 [比如github的这个](https://api.github.com/)
+
+
+## REST的六大要点
+1. 统一的接口形式
+2. 无状态化
+3. 可缓存
+4. 前后端分离
+5. 分层系统
+6. 按需编码-可选(目前没看到实现这个特性的)
+
+## REST的四个级别
+* **0级**:传统的RPC级别
+* **1级**:从RPC中以动作为中心的风格转换为以资源为中心的风格,URI变成了真正的"统一资源标识符".URI遵循统一规范,HTTP谓词使用不够规范
+* **2级**:所有对象都抽象成CRUD,严格遵循HTTP谓词
+* **3级**:超媒体级别(超媒体状态引擎)
 
 
