@@ -12,10 +12,15 @@ let router = express.Router();
 
 /**
  * /api/roles
+ * get 角色分页列表
  * post 添加角色
  */
 router
     .route('/')
+    .get((req, res, next)=>{
+
+      res.send('角色列表');
+    })
     .post(function (req, res, next) {
 
       res.send('添加角色');
@@ -33,6 +38,10 @@ router
 
       res.send('检索角色');
     })
+    .post((req, res, next)=>{
+
+      res.send('更新角色');
+    })
     .put(function (req, res, next) {
 
       res.send('更新角色');
@@ -49,5 +58,3 @@ router
 
 
 module.exports = router;
-
-

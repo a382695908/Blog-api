@@ -115,6 +115,7 @@ router.use(function (err, req, res, next) {
         });
   }
   else {
+    //
     res.setHeader('Authorization', req.headers.authorization);
     next();
   }

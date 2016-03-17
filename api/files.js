@@ -3,7 +3,7 @@
 /**
  * /api/files
  * @description 文件操作
- * todo 单独做个文件服务期,+MD5秒传
+ * todo 单独做个文件服务器,+MD5秒传
  * todo 断点续传
  * @author yingyujia
  * @time 16/3/8
@@ -72,7 +72,6 @@ router
                 res.send('上传成功:' + d);
 
               });
-
             });
           });
 
@@ -88,13 +87,15 @@ router
 /**
  * /api/files/exists/:fileName
  * 检查文件一致性
- * @param fileName md5_size.extName
+ * @param fileName md5_size[.extName]
  * get
  */
 router
     .route('/exists/:fileName')
     .get((req, res, next)=> {
       let fileName = req.params.md5Size;
+      //todo 查db
+
       fs.exists(path.join(file_save, '/img/', fileName), (exists)=> {
         res.json({
           success:true,
