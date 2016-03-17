@@ -31,9 +31,7 @@ router
       console.log(req.body);
 
       res.send('新建一个用户');
-    })
-
-;
+    });
 
 /**
  * api/users/:id
@@ -62,14 +60,33 @@ router
     })
     .delete(function (req, res, next) {//204
       res
-          //.status(204)
+      //.status(204)
           .send('删除特定用户 id=' + req.params.id);
     });
 
 /**
- * 重置密码
+ * api/users/exists/:email
+ * get 检查用户是否存在
  */
-router.post('/requestPasswordReset',function(req, res, next){
+router
+    .route('/exists/:email')
+    .get((req, res, next)=> {
+
+      //读取数据库
+
+      res.json({
+        success: true,
+        result: {}
+      });
+
+    });
+
+/**
+ * /api/users/requestPasswordReset
+ * post 重置密码
+ */
+router.post('/requestPasswordReset', function (req, res, next) {
+  //检查是否存在用户
   //todo 发邮件
   res.send('重置密码-post');
 });
