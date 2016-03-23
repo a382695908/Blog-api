@@ -25,6 +25,8 @@ api.use('/users', require('./api/users'));
 api.use('/post', require('./api/post'));
 api.use('/roles', require('./api/roles'));
 api.use('/files', require('./api/files'));
+api.use('/search', require('./api/search'));
+
 
 //api.use(busboy({
 //  highWaterMark: 2 * 1024 * 1024,

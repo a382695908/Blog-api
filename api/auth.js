@@ -13,7 +13,7 @@ let jwt     = require('jsonwebtoken');
 let config = require('../config');
 let redis  = require('../db/redis');
 
-
+//
 router.use(function (req, res, next) {
 
   /**
@@ -47,6 +47,7 @@ router.use(function (req, res, next) {
           //todo 验证 访问的url path知否有权限
           //console.log('decode', decode);
           //401
+
           next();
         }
 
