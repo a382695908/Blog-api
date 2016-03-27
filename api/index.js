@@ -12,7 +12,7 @@ let router  = express.Router();
 
 router.route('/')
     .get(function (req, res, next) {
-      //读取数据库中管理员公开信息
+      //读取数据库中我的公开信息
       res.json({
         name:'blog',
         author:'ying yujia',
