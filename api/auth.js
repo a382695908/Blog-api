@@ -22,9 +22,9 @@ router.use(function (req, res, next) {
   /**
    * 允许跨域访问
    */
-  //res.setHeader('Access-Control-Allow-Origin', '*');
-  //res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-  //res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
 
   if (req.headers.authorization) { //有登陆
     var parts = req.headers.authorization.split(' ');
