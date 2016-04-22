@@ -5,10 +5,12 @@
  */
 
 "use strict";
+let express, router,
+db;
 
-let express = require('express');
-let router  = express.Router();
-
+express = require('express');
+router = express.Router();
+db= require('../db/redis');
 
 
 

@@ -5,13 +5,16 @@
  * @author yingyujia
  * @time 16/3/2
  */
+let express, router, jwt,
+  config,
+  db;
 
-let express = require('express');
-let router  = express.Router();
-let jwt     = require('jsonwebtoken');
+express = require('express');
+router = express.Router();
+jwt = require('jsonwebtoken');
 
-let config = require('../config');
-let redis  = require('../db/redis');
+config = require('../config');
+db = require('../db/redis');
 
 //
 router.use(function (req, res, next) {
@@ -59,7 +62,7 @@ router.use(function (req, res, next) {
     }
     else {
       next({
-        log    : true,
+        log: true,
         message: 'credentials_bad_format'
       });
     }
@@ -67,7 +70,7 @@ router.use(function (req, res, next) {
   else {//没登陆
 
     //模拟登录效果
-    var token = jwt.sign({foo: 'bar'}, config.jwt.secret);
+    var token = jwt.sign({ foo: 'bar' }, config.jwt.secret);
     res.setHeader('Authorization', 'token ' + token);//参考github的oauth接口
 
     next({});
@@ -90,7 +93,7 @@ router.use(function (err, req, res, next) {
   //console.log(req.originalUrl);
 
   //屏蔽身份校验
-  err=undefined;
+  err = undefined;
   next(err);
 });
 
@@ -109,11 +112,11 @@ router.use(function (err, req, res, next) {
     //前台根据不同错误弹框
     //如果有错误消息,前台弹框显示,否则直接跳转登录页
     res
-        .status(401)
-        .json({
-          success: false,
-          msg    : err.msg || false
-        });
+      .status(401)
+      .json({
+        success: false,
+        msg: err.msg || false
+      });
   }
   else {
     //

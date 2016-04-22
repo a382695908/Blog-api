@@ -6,10 +6,12 @@
  * @author yingyujia
  * @time 16/3/17
  */
+let express, router,
+db;
+ express = require('express');
+ router = express.Router();
 
-let express = require('express');
-let router = express.Router();
-
+db = require('../db/redis');
 /**
  * /api/settings
  * get 获取当前用户设置

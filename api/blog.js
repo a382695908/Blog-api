@@ -6,10 +6,11 @@
  * @author yingyujia
  * @time 16/3/18
  */
-
-let express = require('express');
-let router  = express.Router();
-
+let express, router,
+  db;
+express = require('express');
+router  = express.Router();
+db = require('../db/redis');
 /**
  *  /api/blog
  *  get 获取博客分页列表

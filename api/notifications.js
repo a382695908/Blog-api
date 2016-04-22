@@ -6,15 +6,13 @@
  * @description 看起来是个大坑,最后做
  * @author yingyujia
  * @time 16/3/17
- *
- * https://segmentfault.com/a/1190000004619704     消息系统设计与实现-概念篇
- * https://segmentfault.com/a/1190000004619723     消息系统设计与实现-实现篇
  */
 
-
-let express = require('express');
-let router = express.Router();
-
+let express, router,
+    db;
+express = require('express');
+router = express.Router();
+db = require('../db/redis');
 /**
  * /api/notifications/
  * get 用户获取收到的通知(评论,关注,喜欢都会被添加到通知列表)
@@ -22,10 +20,10 @@ let router = express.Router();
  */
 router
     .route('/')
-    .get((req, res, next)=>{
+    .get((req, res, next) => {
 
     })
-    .post((req, res, next)=>{
+    .post((req, res, next) => {
 
     });
 

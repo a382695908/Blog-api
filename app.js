@@ -4,8 +4,7 @@
  * app主程序
  */
 let path, process, express, favicon, logger, bodyParser,
-  app,
-  db;
+  app;
 path = require('path');
 process = require('process');
 
@@ -28,9 +27,9 @@ app = express();
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-db=require('./db/redis');
-
 app.use(logger('dev'));
+//# region
+//# endRegion
 
 /**
  * configure app to use bodyParser()

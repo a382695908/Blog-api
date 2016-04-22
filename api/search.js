@@ -6,9 +6,13 @@
  * @author yingyujia
  * @time 16/3/18
  */
+let express, router,
+    db;
 
-let express = require('express');
-let router = express.Router();
+express = require('express');
+router = express.Router();
+
+db = require('../db/redis');
 
 /**
  * /api/search
@@ -18,13 +22,13 @@ let router = express.Router();
  */
 router
     .route('/')
-    .get((req, res, next)=> {
+    .get((req, res, next) => {
 
 
-      console.log(req.test);
-      console.log(req.body);
+        console.log(req.test);
+        console.log(req.body);
 
-      res.json(req.query);
+        res.json(req.query);
     });
 
 /**
@@ -36,7 +40,7 @@ router
  */
 router
     .route('/:')
-    .get((req, res, next)=> {
+    .get((req, res, next) => {
 
     });
 

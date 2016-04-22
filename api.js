@@ -1,19 +1,20 @@
 "use strict";
-
 /**
- *
+ * api
  */
-const express = require('express');
-const busboy = require('connect-busboy'); //express4 需要第三方支持,文件上传功能
 
-const api   = express();
+const express, busboy,
+  api;
+express = require('express');
+busboy = require('connect-busboy'); //express4 需要第三方支持,文件上传功能
+
+api = express();
 
 /**
  * 验证授权(如果需要的话)
  */
 api.use(require('./api/auth'));
 api.use(busboy());//{ immediate: true }
-
 
 /**
  * 配置路由
@@ -28,7 +29,6 @@ api.use('/files', require('./api/files'));
 api.use('/settings', require('./api/settings'));
 api.use('/search', require('./api/search'));
 
-
 //api.use(busboy({
 //  highWaterMark: 2 * 1024 * 1024,
 //  limits: {
@@ -36,5 +36,5 @@ api.use('/search', require('./api/search'));
 //  }
 //}));
 
-module.exports=api;
+module.exports = api;
 
