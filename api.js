@@ -25,6 +25,7 @@ api.use('/users', require('./api/users'));
 api.use('/post', require('./api/post'));
 api.use('/roles', require('./api/roles'));
 api.use('/files', require('./api/files'));
+api.use('/settings', require('./api/settings'));
 api.use('/search', require('./api/search'));
 
 

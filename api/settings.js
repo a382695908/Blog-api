@@ -18,14 +18,14 @@ let router = express.Router();
  */
 router
     .route('/')
-    .get((req, res, next)=>{
-
+    .get((req, res, next) => {
+        res.send('get-获取当前用户设置');
     })
-    .put((req, res, next)=>{
-
+    .put((req, res, next) => {
+        res.send('put-获取当前用户设置');
     })
-    .post((req, res, next)=>{
-
+    .post((req, res, next) => {
+        res.send('post-获取当前用户设置');
     });
 
 

@@ -4,25 +4,20 @@
  * app主程序
  */
 
-let path    = require('path');
-let process    = require('process');
+let path = require('path');
+let process = require('process');
 
 let express = require('express');
 let favicon = require('serve-favicon');
-let logger  = require('morgan');
+let logger = require('morgan');
 //let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
-//process.on('uncaughtException', function (error) {
-//  console.error(error);
-//});
+// process.on('uncaughtException', function (error) {
+//   console.error('未捕获的错误', error);
+// });
 
-/**
- *
- */
 let app = express();
-//let api   = require('./api');
-
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
@@ -41,20 +36,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 //parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //app.use(cookieParser());
 
 //静态文件
 app.use(express.static(path.join(__dirname, 'public')));
-/**
- * 暂时放hexo的静态博客
- * 后期换成ng1.x的博客,控制路由使用H5模式
- */
+
+//静态资源
 app.use(express.static(path.join(__dirname, 'views')));
 
 app.use('/api', require('./api'));
-
 
 /**
  * catch 404 and forward to error handler
@@ -62,7 +54,7 @@ app.use('/api', require('./api'));
  * todo 写日志
  */
 app.use(function (req, res, next) {
-  let err    = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
@@ -77,16 +69,16 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   if (err.status = 404) {
     res
-        .status(404)
-        .json({
-          code: 404,
-          msg : '没有这个接口'
-        });
+      .status(404)
+      .json({
+        code: 404,
+        msg: '没有这个接口'
+      });
   }
   else {
     res
-        .status(500)
-        .send('sever error,code:' + (err.status || 500));
+      .status(500)
+      .send('sever error,code:' + (err.status || 500));
   }
 
 });
