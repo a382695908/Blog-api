@@ -3,21 +3,23 @@
 /**
  * app主程序
  */
+let path, process, express, favicon, logger, bodyParser,
+  app,
+  db;
+path = require('path');
+process = require('process');
 
-let path = require('path');
-let process = require('process');
-
-let express = require('express');
-let favicon = require('serve-favicon');
-let logger = require('morgan');
+express = require('express');
+favicon = require('serve-favicon');
+logger = require('morgan');
 //let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser');
+bodyParser = require('body-parser');
 
 // process.on('uncaughtException', function (error) {
 //   console.error('未捕获的错误', error);
 // });
 
-let app = express();
+app = express();
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +27,8 @@ let app = express();
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+db=require('./db/redis');
 
 app.use(logger('dev'));
 
