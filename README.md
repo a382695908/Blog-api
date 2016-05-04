@@ -1,17 +1,23 @@
 blog-api
 ===============
+## 安装
+* node 
+* npm i
+* npm install -g nodemon [nodemon](https://github.com/remy/nodemon)
+* 
+
 blog的后端(API形式)
 ## master
 * 使用nginx+redis(数据库+缓存)
 
 ## 分支
-* 使用nginx+[qiniu](https://portal.qiniu.com/signup?code=3lbnx1x2ub1hu)
+* 使用nginx+mysql
 * 数据库mongodb+redis缓存
 * 数据库mysql+redis缓存
 
 ## 技术使用
-* http2(节省流量,压缩http头,不需要合并文件等优化了)
-* https(http2的前置条件)(沃通免费证书)
+* http2(节省流量,压缩http头,不需要合并文件等优化了)(目前支持的浏览器少)
+* https(http2的前置条件,[沃通免费证书](https://www.wosign.com/)或者[letsencrypt](https://letsencrypt.org/))
 * nginx
 * redis(分支2)
 * [qiniu](https://portal.qiniu.com/signup?code=3lbnx1x2ub1hu)
@@ -22,10 +28,9 @@ blog的后端(API形式)
 * [状态码](http://developer.qiniu.com/docs/v6/api/reference/codes.html)
 * 身份验证机制 使用josn web token,Authorization: \[Admin\] [token]
 * get 查询类方法,有参数就返回特定对象,否则就是分页json
-* [api参考](https://leancloud.cn/docs/rest_api.html#用户)
+* api参考 [leancloud.cn](https://leancloud.cn/docs/rest_api.html#用户) 和 [parse.com](https://parse.com/docs/rest/guide)
 * 权限  path method uid
 * api暂时放在 https://yingyj.com/api/ 下,以后可能会改成 https://api.yingyj.com/version(跨域用nginx?)
-* api参考 [parse.com](https://parse.com/docs/rest/guide)
 
 ### 使用的 node 模块
 * [express](https://github.com/expressjs/express) Fast, unopinionated, minimalist web framework for node

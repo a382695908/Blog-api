@@ -24,16 +24,20 @@ router
 
     //分页json
     //查询用户列表
+    
     console.log(req.query);
-
     res.send('查询用户列表-get');
 
   })
   .post(function (req, res, next) {//201   422(验证错误,比如用户已存在?格式不正确)
     //新建一个用户
     console.log(req.body);
+    
+    
+    
+    
 
-    res.send('新建一个用户');
+    res.send('新建1个用户');
   });
 
 /**

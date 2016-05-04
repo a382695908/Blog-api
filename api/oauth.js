@@ -27,7 +27,7 @@ db = require('../db/redis');
 _github.state = '';
 //_.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 
-_postData =
+//_postData =
 
   //todo error process
   ///api/oauth/**
