@@ -10,8 +10,9 @@
  */
 
 let express, router, crypto, path, fs,
+  db,
   file_save;
-  
+
 express = require('express');
 crypto = require('crypto');//文件秒传  md5+文件字节数(双验证)
 path = require('path');

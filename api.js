@@ -3,7 +3,7 @@
  * api
  */
 
-const express, busboy,
+let express,busboy,
   api;
 express = require('express');
 busboy = require('connect-busboy'); //express4 需要第三方支持,文件上传功能

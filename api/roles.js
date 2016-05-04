@@ -6,7 +6,8 @@
  * @author yingyujia
  * @time 16/3/8
  */
-let express, router;
+let express, router,
+  db;
 express = require('express');
 router = express.Router();
 

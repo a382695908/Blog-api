@@ -8,6 +8,7 @@
  */
 
 let express, request, router,
+  db,
   config,
   _github,
   _postData;
