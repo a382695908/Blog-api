@@ -7,12 +7,13 @@
  * @time 16/3/2
  */
 let express, router,
+  _result,
   db;
 express = require('express');
 router = express.Router();
 
 db = require('../db/redis');
-
+_result = require('../config').result;
 /**
  * api/users/
  * get 获取用户列表
@@ -24,20 +25,36 @@ router
 
     //分页json
     //查询用户列表
-    
+
     console.log(req.query);
     res.send('查询用户列表-get');
 
   })
   .post(function (req, res, next) {//201   422(验证错误,比如用户已存在?格式不正确)
-    //新建一个用户
+    //新建一个用户 
     console.log(req.body);
-    
-    
-    
-    
 
-    res.send('新建1个用户');
+    db.hget('user:' + req.body.userName, 'userName', function (err, obj) {
+      if (err) {
+        console.log(err);
+        res.json(_result.error(err));
+        return;
+      }
+      if (obj) {// && obj === req.body.userName
+        res.json(_result.error('账号已经存在'));
+      }
+      else {
+        let result = db.hmset(
+          'user:' + req.body.userName,
+          'userName', req.body.userName,
+          'password', req.body.password);
+
+        if (result) {
+          res.json(_result.success('注册成功'));
+        }
+      }
+    })
+
   });
 
 /**

@@ -5,35 +5,55 @@
  */
 
 module.exports = {
-  host   : 'yingyj.com',
-  redis  : {
-    host           : 'yingyj.com',
-    port           : 9999,
-    auth_pass      : '2%skf9pD@B5t@wy2',
+  host: 'yingyj.com',
+  redis: {
+    host: 'yingyj.com',
+    port: 9999,
+    auth_pass: '2%skf9pD@B5t@wy2',
     connect_timeout: 10000
   },
   mongodb: {},
-  jwt    : {
+  jwt: {
     secret: 'shhhhh'
   },
-  email:{
-    realName:'雨夹雪 ✔',
-    emailAddress:'@qq.com',
-    account:'',
-    pwd:'dmqrnzmhnrmubfib'
+  email: {
+    realName: '雨夹雪 ✔',
+    emailAddress: '@qq.com',
+    account: '',
+    pwd: 'dmqrnzmhnrmubfib'
   },
-  oauth:{
-    github:{
+  oauth: {
+    github: {
 
-      authorize:'https://github.com/login/oauth/authorize',//get
-      access_token:'https://github.com/login/oauth/access_token',
-      api:'https://api.github.com/user?access_token=',
-      scope       : 'user:email',
+      authorize: 'https://github.com/login/oauth/authorize',//get
+      access_token: 'https://github.com/login/oauth/access_token',
+      api: 'https://api.github.com/user?access_token=',
+      scope: 'user:email',
 
-      client_id:'444e32d4b0046821de79',
-      redirect_uri:'https://yingyj.com/api/oauth/github',
-      client_secret:'7215422a1f287be1b613018e4d6aae181de3de7f'
+      client_id: '444e32d4b0046821de79',
+      redirect_uri: 'https://yingyj.com/api/oauth/github',
+      client_secret: '7215422a1f287be1b613018e4d6aae181de3de7f'
 
+    }
+  },
+  result: { //全局返回结果配置
+    success: function (data) {
+      let json = {
+        success: true,
+        result: data
+      }
+      // if (arguments[1] !== undefined) {
+    
+      // }
+
+      return json;
+    },
+    error: function (data) {
+      return {
+        success: false,
+        //errNo:
+        result: data
+      };
     }
   }
 

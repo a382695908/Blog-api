@@ -16,7 +16,7 @@
 ```json
 {
   "success":false,
-  "msg":"错误信息"
+  "result":"错误信息"
 }
 ```
 
