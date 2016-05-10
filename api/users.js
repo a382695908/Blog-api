@@ -8,16 +8,19 @@
  */
 let express, router,
   _result,
+  moment,
   db;
 express = require('express');
 router = express.Router();
 
+moment = require('moment');
+moment.locale('zh-cn');
 db = require('../db/redis');
 _result = require('../config').result;
 /**
  * api/users/
- * get 获取用户列表
- * post 添加一个(多个?)用户
+ * get 获取用户列表 
+ * post 添加一个用户 done  (多个?)
  */
 router
   .route('/')
@@ -27,12 +30,17 @@ router
     //查询用户列表
 
     console.log(req.query);
+    if (req.query) {
+      
+      db.hget('user:' + req.query.userName)
+      
+    }
+
     res.send('查询用户列表-get');
 
   })
   .post(function (req, res, next) {//201   422(验证错误,比如用户已存在?格式不正确)
     //新建一个用户 
-    console.log(req.body);
 
     db.hget('user:' + req.body.userName, 'userName', function (err, obj) {
       if (err) {
@@ -44,10 +52,14 @@ router
         res.json(_result.error('账号已经存在'));
       }
       else {
+        //添加数据库
         let result = db.hmset(
           'user:' + req.body.userName,
           'userName', req.body.userName,
-          'password', req.body.password);
+          'password', req.body.password,
+          'createTime', moment().format('YYYY/MM/DD hh:mm:ss'),
+          'loginTimes', 0
+        );
 
         if (result) {
           res.json(_result.success('注册成功'));

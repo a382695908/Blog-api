@@ -3,6 +3,9 @@ Redis 经验
 * [原文](https://segmentfault.com/a/1190000005007692)
 * [新浪经验](http://history.programmer.com.cn/14577/)
 * [简书搜索结果](http://www.jianshu.com/search?q=redis&type=notes)
+* [redis数据结构使用场景](http://github.thinkingbar.com/redis-use-situation/)
+* [Redis作者谈Redis应用场景](http://blog.nosqlfan.com/html/2235.html)
+·
 
 ## 认识误区
 * 用get/set方式使用Redis
