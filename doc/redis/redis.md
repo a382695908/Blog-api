@@ -1,11 +1,17 @@
 Redis 经验
 ====================
+
+## 链接
 * [原文](https://segmentfault.com/a/1190000005007692)
 * [新浪经验](http://history.programmer.com.cn/14577/)
 * [简书搜索结果](http://www.jianshu.com/search?q=redis&type=notes)
 * [redis数据结构使用场景](http://github.thinkingbar.com/redis-use-situation/)
 * [Redis作者谈Redis应用场景](http://blog.nosqlfan.com/html/2235.html)
-·
+
+## 包
+* pm2 按理说要 -g 安装
+* [hiredis-node](https://github.com/redis/hiredis-node) 
+如果用redis不存很大的数据，就不需要用这个，The hiredis protocol parser is faster than JavaScript protocol parsers, but the speedup only becomes noticeable for large replies. If you use Redis for simple SET/GET operations, there won't be a big benefit to using hiredis. If you use Redis for big SUNION/SINTER/LRANGE/ZRANGE operations, the benefit to using hiredis-node can be significant.
 
 ## 认识误区
 * 用get/set方式使用Redis
