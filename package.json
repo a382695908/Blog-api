@@ -49,7 +49,12 @@
     "qiniu": "^6.1.11",
     "redis": "^2.6.0-2",
     "request": "^2.69.0",
-    "serve-favicon": "^2.3.0"
+    "response-time": "^2.3.1",
+    "serve-favicon": "^2.3.0",
+    "superagent": "^1.8.3",
+    "utility": "^1.8.0",
+    "validator": "^5.2.0",
+    "xmlbuilder": "^8.2.2"
   },
   "devDependencies": {
     "colors": "^1.1.2",
