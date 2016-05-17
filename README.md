@@ -1,10 +1,9 @@
 blog-api
 ===============
 ## 安装
-* node 
+* node 6.x   nvm use
 * npm i
-* npm install -g nodemon [nodemon](https://github.com/remy/nodemon)
-* 
+* pm2
 
 blog的后端(API形式)
 ## master

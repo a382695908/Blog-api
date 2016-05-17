@@ -3,12 +3,30 @@
 /**
  * app主程序
  */
-let path, process, express, favicon, logger, bodyParser,
+let config,
+  path,
+  process,
+  express,
+  session,
+  
+  passport,
+  GitHubStrategy,
+  githubStrategyMiddleware,
+  
+  favicon,
+  logger,
+  bodyParser,
   app;
+  
+config = require('./config');
 path = require('path');
 process = require('process');
-
 express = require('express');
+session = require('express-session');
+passport = require('passport');
+GitHubStrategy = require('passport-github').Strategy;
+githubStrategyMiddleware = require('./middlewares/github_strategy');
+
 favicon = require('serve-favicon');
 logger = require('morgan');
 //let cookieParser = require('cookie-parser');

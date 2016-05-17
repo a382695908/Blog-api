@@ -21,7 +21,7 @@ api.use(busboy());//{ immediate: true }
  * 使用 express.Router的写法
  */
 api.use('/', require('./api/index'));//todo 显示所有api
-api.use('/oauth', require('./api/oauth'));
+//api.use('/oauth', require('./api/oauth'));
 api.use('/users', require('./api/users'));
 api.use('/post', require('./api/post'));
 api.use('/roles', require('./api/roles'));

@@ -31,7 +31,7 @@
     "express-session": "^1.13.0",
     "helmet": "^2.0.0",
     "jsonwebtoken": "^6.2.0",
-    "lodash": "^4.6.1",
+    "lodash": "^4.12.0",
     "log4js": "^0.6.36",
     "marked": "^0.3.5",
     "moment": "^2.13.0",
@@ -54,7 +54,8 @@
     "superagent": "^1.8.3",
     "utility": "^1.8.0",
     "validator": "^5.2.0",
-    "xmlbuilder": "^8.2.2"
+    "xmlbuilder": "^8.2.2",
+    "xss": "^0.2.13"
   },
   "devDependencies": {
     "colors": "^1.1.2",
@@ -63,6 +64,7 @@
     "istanbul": "^0.4.3",
     "mocha": "^2.4.5",
     "nock": "^8.0.0",
+    "nodemon": "^1.9.2",
     "should": "^8.3.1",
     "supertest": "^1.2.0"
   },
